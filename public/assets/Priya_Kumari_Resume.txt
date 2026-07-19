@@ -1,0 +1,80 @@
+================================================================================
+                                 PRIYA KUMARI
+              Software Engineer | Full Stack Developer | Backend
+         Email: priyasingh311256@gmail.com | Phone: +91 9798245322
+              LinkedIn: linkedin.com/in/priya | GitHub: github.com/priya
+================================================================================
+
+PROFILE
+--------------------------------------------------------------------------------
+Backend-focused Full Stack Engineer with 1+ year of experience building scalable
+RESTful APIs, secure backend systems, and web applications using React, Node.js,
+Express.js, FastAPI, PostgreSQL, Redis, Docker, and CI/CD.
+
+PROFESSIONAL EXPERIENCE
+--------------------------------------------------------------------------------
+Associate Software Engineer | Mobtions                             Jun 2025 – Present
+App Monetization Platform
+• Reduced PostgreSQL/MySQL P95 API latency from ~500ms to ~120ms by implementing
+  composite indexing, join refactoring, and query plan analysis on critical production endpoints.
+• Built and shipped 10+ end-to-end product features across React, Node.js/Express,
+  and FastAPI for app monetization workflows and internal dashboards, reducing page
+  load time by 30% (measured via Lighthouse) for 20+ operations users.
+• Implemented Redis caching for high-traffic endpoints, cutting average database
+  load by ~60% during peak usage and reducing cache miss rate to under 5%.
+• Automated ETL pipelines using Apache Airflow, reducing batch data processing time
+  by 40% and eliminating ~6 hours/week of manual data operations.
+• Designed secure backend services with JWT authentication, bcrypt-based password
+  protection, RBAC, request validation, rate limiting, and structured error handling.
+• Containerized services with Docker and built CI/CD pipelines using GitHub Actions
+  and Azure DevOps, reducing deployment time from ~45 minutes to ~10 minutes.
+
+Game Developer Intern | Mobtions                               Dec 2024 – May 2025
+Game Development (Web & Unity)
+• Profiled CPU and memory performance of game services, identifying and resolving 3
+  bottlenecks that reduced runtime overhead by 25% through engine-level optimization.
+• Refactored backend communication layer with Promise-based asynchronous request
+  handling, reducing latency by ~30% under high-concurrency scenarios (500+ connections).
+
+AI Blog Automation (Internal Tooling Initiative, Mobtions)
+• Built a modular Node.js + Python backend for an internal AI blog automation tool,
+  integrating 3 third-party APIs to automate topic ingestion, media enrichment, and
+  publishing for 15+ weekly posts while reducing manual effort by ~4 hours per article.
+
+PROJECTS
+--------------------------------------------------------------------------------
+1. EngageX — Mobile Ad-Tech & Monetization Platform (Lead Architect)
+   • Lead Architect of 8 independently deployable microservices (Express 5, FastAPI,
+     Celery, React, C# .NET).
+   • Self-healing async offer sync engine with deterministic hash change detection
+     and cold-start bootstrap reconciliation.
+   • Cookie-free server-to-server (S2S) attribution postback flow with Razorpay payouts.
+
+2. Fintaxure — Financial & Tax Advisory Platform (Live: https://fintaxure.com/)
+   • Full-stack digital corporate tax advisory platform built with React & Vite.
+
+3. KanecTech — Enterprise Cloud & Digital Innovation (Live: https://www.kanectech.com/)
+   • Enterprise technology consulting platform providing SAP modernization & AI automation.
+
+4. Admission Management & CRM System | React.js, TypeScript, Express, PostgreSQL, JWT (April 2026)
+   • Built full-stack admission workflow platform for colleges to manage applicants,
+     document verification, fee tracking, and seat allocation.
+   • PostgreSQL SELECT FOR UPDATE locking eliminating race conditions under 500+ requests.
+
+5. LLM-Powered Document Interaction Platform | FastAPI, LangChain, Vector Store (Jul 2024 – Aug 2024)
+   • Production-grade RAG pipeline achieving 85%+ answer relevance on test queries.
+
+EDUCATION
+--------------------------------------------------------------------------------
+Kalinga Institute of Industrial Technology (KIIT)                   2021 – 2025
+Bachelor of Technology (B.Tech) | Bhubaneswar, India
+
+TECHNICAL SKILLS
+--------------------------------------------------------------------------------
+Core Technologies : JavaScript (ES6+), Python, SQL, React.js, Node.js, Express.js,
+                    FastAPI, JWT, RBAC, Rate Limiting.
+Databases         : PostgreSQL, MySQL, Schema Design, Query Optimization, Composite Indexing.
+Caching & Pipelines: Redis, Apache Airflow (ETL orchestration).
+DevOps & Cloud    : Docker, GitHub Actions, Azure DevOps, GHCR, DigitalOcean, Nginx.
+AI / ML           : LangChain, LLMs, TensorFlow, PyTorch, NLP.
+================================================================================
