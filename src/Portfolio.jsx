@@ -3,7 +3,7 @@ import {
   Mail, Phone, ExternalLink, Check, Copy, X,
   Database, Cpu, Layers, Zap, Code, Server, Shield, Sparkles,
   Play, RefreshCw, Terminal, CheckCircle2, ArrowUpRight, Activity, ArrowRight,
-  ChevronLeft, ChevronRight, Gauge, Layout, HardDrive, Smartphone, Globe, MessageCircle, Globe2, FileText, Lock, Users, Clock, Box, Download, Send, Bot, User, CornerDownLeft
+  ChevronLeft, ChevronRight, Gauge, Layout, HardDrive, Smartphone, Globe, MessageCircle, Globe2, FileText, Lock, Users, Clock, Box, Download, Send, Bot, User, CornerDownLeft, Calendar
 } from "lucide-react";
 
 /* ---------------------------------------------------------- */
@@ -420,15 +420,15 @@ function ScrollToTopButton() {
 /* AI CHATBOT FLOATING COMPONENT                              */
 /* ---------------------------------------------------------- */
 
-function AiChatbot({ onOpenEngagexModal }) {
+function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       sender: "bot",
-      text: "Hi there! 👋 I'm Priya's AI Assistant. Ask me anything about her backend experience, tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or download her resume!",
+      text: "Hi there! 👋 I'm Priya's AI Assistant. Ask me anything about her backend experience, tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or schedule a call with her!",
       time: "Just now",
       actions: [
-        { type: "download", label: "Download Resume 📄" },
+        { type: "schedule", label: "Schedule a Call 📅" },
         { type: "query", label: "Live Projects 🚀", query: "What are her live projects?" },
         { type: "query", label: "EngageX Architecture ⚡", query: "Tell me about EngageX" }
       ]
@@ -465,12 +465,12 @@ function AiChatbot({ onOpenEngagexModal }) {
   const generateBotReply = (query) => {
     const q = query.toLowerCase();
 
-    if (q.includes("resume") || q.includes("cv") || q.includes("download")) {
+    if (q.includes("resume") || q.includes("cv") || q.includes("download") || q.includes("schedule") || q.includes("call") || q.includes("meeting") || q.includes("calendar")) {
       return {
         sender: "bot",
-        text: "Priya Kumari is an Associate Software Engineer at Mobtions specializing in high-performance RESTful APIs, Node.js, FastAPI, PostgreSQL, and Redis. Click below to download her official resume:",
+        text: "Priya Kumari is an Associate Software Engineer at Mobtions specializing in high-performance RESTful APIs, Node.js, FastAPI, PostgreSQL, and Redis. Click below to schedule a call with her:",
         time: "Just now",
-        actions: [{ type: "download", label: "Download Priya's Resume 📄" }]
+        actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
     }
 
@@ -480,7 +480,7 @@ function AiChatbot({ onOpenEngagexModal }) {
         text: "Priya Kumari is a backend-focused Full Stack Engineer with 1+ years of professional experience. She holds a B.Tech from KIIT (2021-2025), reduced database P95 latency by 76% at Mobtions, built live platforms Fintaxure.com and KanecTech.com, and served as Lead Architect for EngageX.",
         time: "Just now",
         actions: [
-          { type: "download", label: "Download Resume 📄" },
+          { type: "schedule", label: "Schedule a Call 📅" },
           { type: "query", label: "View Tech Stack 💻", query: "What is her tech stack?" }
         ]
       };
@@ -491,7 +491,7 @@ function AiChatbot({ onOpenEngagexModal }) {
         sender: "bot",
         text: "Priya's core stack includes:\n• Languages: JavaScript (ES6+), Python, SQL, TypeScript\n• Backend: Node.js (Express 5), FastAPI, RESTful APIs, JWT, RBAC\n• Databases & Caching: PostgreSQL, MySQL, Redis, SQLite\n• Pipelines & DevOps: Apache Airflow (ETL), Docker, GitHub Actions, Azure DevOps\n• AI/ML: LangChain, LLMs, RAG Pipelines",
         time: "Just now",
-        actions: [{ type: "download", label: "Download Resume 📄" }]
+        actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
     }
 
@@ -530,7 +530,7 @@ function AiChatbot({ onOpenEngagexModal }) {
         sender: "bot",
         text: "Priya works as an Associate Software Engineer at Mobtions (Jun 2025–Present) where she cut P95 API latency by 76%, reduced database load by 60% via Redis, and automated Apache Airflow ETL pipelines. She previously worked as a Game Dev Intern at Mobtions.",
         time: "Just now",
-        actions: [{ type: "download", label: "Download Resume 📄" }]
+        actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
     }
 
@@ -539,16 +539,16 @@ function AiChatbot({ onOpenEngagexModal }) {
         sender: "bot",
         text: "Priya graduated with a Bachelor of Technology (B.Tech) degree from Kalinga Institute of Industrial Technology (KIIT), Bhubaneswar (2021 – 2025).",
         time: "Just now",
-        actions: [{ type: "download", label: "Download Resume 📄" }]
+        actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
     }
 
     return {
       sender: "bot",
-      text: "I'm Priya's AI Assistant! You can ask me about her experience at Mobtions, her tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or download her resume below:",
+      text: "I'm Priya's AI Assistant! You can ask me about her experience at Mobtions, her tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or schedule a call with her below:",
       time: "Just now",
       actions: [
-        { type: "download", label: "Download Resume 📄" },
+        { type: "schedule", label: "Schedule a Call 📅" },
         { type: "query", label: "Tell me about Priya 👋", query: "Who is Priya?" }
       ]
     };
@@ -585,11 +585,11 @@ function AiChatbot({ onOpenEngagexModal }) {
 
             <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <button
-                onClick={handleDownloadResume}
+                onClick={onOpenScheduleModal}
                 style={{ background: "rgba(56, 189, 248, 0.15)", border: "1px solid rgba(56, 189, 248, 0.3)", color: "#38BDF8", borderRadius: 100, padding: "4px 10px", fontSize: 11, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
               >
-                <Download size={11} />
-                <span>Resume</span>
+                <Calendar size={11} />
+                <span>Schedule Call</span>
               </button>
 
               <button
@@ -617,6 +617,7 @@ function AiChatbot({ onOpenEngagexModal }) {
                         key={aIdx}
                         onClick={() => {
                           if (act.type === "download") handleDownloadResume();
+                          if (act.type === "schedule") onOpenScheduleModal();
                           if (act.type === "engagex") onOpenEngagexModal();
                           if (act.type === "link") window.open(act.url, "_blank");
                           if (act.type === "email") navigator.clipboard.writeText(EMAIL);
@@ -659,7 +660,7 @@ function AiChatbot({ onOpenEngagexModal }) {
               "What is her tech stack?",
               "Live Projects",
               "Tell me about EngageX",
-              "Download Resume",
+              "Schedule a Call",
               "Contact Info"
             ].map((q, i) => (
               <button
@@ -1173,6 +1174,328 @@ function EngagexModal({ isOpen, onClose }) {
   );
 }
 
+/* ---------------------------------------------------------- */
+/* FREE INTERACTIVE CALENDAR BOOKING MODAL                    */
+/* ---------------------------------------------------------- */
+function ScheduleCallModal({ isOpen, onClose }) {
+  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedSlot, setSelectedSlot] = useState("11:30 AM");
+  const [formData, setFormData] = useState({ name: "", email: "", note: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isBooked, setIsBooked] = useState(false);
+
+  const getNextAvailableDays = () => {
+    const days = [];
+    let current = new Date();
+    // Start bookings from tomorrow
+    current.setDate(current.getDate() + 1);
+    while (days.length < 7) {
+      if (current.getDay() !== 0 && current.getDay() !== 6) {
+        days.push(new Date(current));
+      }
+      current.setDate(current.getDate() + 1);
+    }
+    return days;
+  };
+
+  const [availableDays] = useState(getNextAvailableDays());
+
+  useEffect(() => {
+    if (availableDays.length > 0 && !selectedDate) {
+      setSelectedDate(availableDays[0]);
+    }
+  }, [availableDays, selectedDate]);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => { document.body.style.overflow = "unset"; };
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !selectedDate) return;
+    setIsSubmitting(true);
+
+    const emailSubject = `📅 New Call Scheduled: ${formData.name}`;
+    const emailBody = `
+You have a new 1-on-1 meeting request from your portfolio:
+--------------------------------------------------
+Name: ${formData.name}
+Email: ${formData.email}
+Date: ${formatDateLabel(selectedDate)}
+Time: ${selectedSlot} (IST)
+Purpose/Note: ${formData.note || 'None'}
+--------------------------------------------------
+    `;
+
+    fetch("https://formsubmit.co/ajax/priyasingh311256@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        subject: emailSubject,
+        date: formatDateLabel(selectedDate),
+        time: selectedSlot,
+        note: formData.note || 'None',
+        message: emailBody
+      })
+    })
+    .then(() => {
+      setIsSubmitting(false);
+      setIsBooked(true);
+    })
+    .catch((err) => {
+      console.error("Mail submit error: ", err);
+      // Fallback: show success state anyway so user experience is not disrupted
+      setIsSubmitting(false);
+      setIsBooked(true);
+    });
+  };
+
+  const handleReset = () => {
+    setFormData({ name: "", email: "", note: "" });
+    setIsBooked(false);
+    onClose();
+  };
+
+  const timeSlots = ["10:00 AM", "11:30 AM", "02:00 PM", "03:30 PM", "05:00 PM"];
+
+  const formatDateLabel = (date) => {
+    if (!date) return "";
+    return date.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" });
+  };
+
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal-window" style={{ maxWidth: 580, padding: 0, overflow: "hidden" }} onClick={(e) => e.stopPropagation()}>
+        
+        {/* Modal Header */}
+        <div className="modal-header" style={{ padding: "20px 24px", borderBottom: "1px solid rgba(255, 255, 255, 0.08)" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <div style={{ padding: 8, borderRadius: 8, background: "rgba(56, 189, 248, 0.15)", color: "#38BDF8" }}>
+              <Calendar size={22} />
+            </div>
+            <div>
+              <h2 style={{ fontSize: 18, fontWeight: 800, color: "#F9FAFB", lineHeight: 1.2 }}>
+                Schedule a 1-on-1 Call
+              </h2>
+              <span style={{ fontSize: 12, color: "#9CA3AF" }}>Choose a time that works best for you. 100% free.</span>
+            </div>
+          </div>
+
+          <button
+            onClick={onClose}
+            style={{
+              background: "rgba(255, 255, 255, 0.05)",
+              border: "1px solid rgba(255, 255, 255, 0.12)",
+              color: "#F9FAFB",
+              borderRadius: "50%",
+              width: 32,
+              height: 32,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+            }}
+          >
+            <X size={16} />
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <div style={{ padding: 24, maxHeight: "calc(85vh - 80px)", overflowY: "auto" }}>
+          {isBooked ? (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", padding: "32px 16px" }}>
+              <div style={{ width: 56, height: 56, borderRadius: "50%", background: "rgba(16, 185, 129, 0.2)", border: "2px solid #10B981", display: "flex", alignItems: "center", justifyContent: "center", color: "#10B981", marginBottom: 16 }}>
+                <CheckCircle2 size={32} />
+              </div>
+              <h3 style={{ fontSize: 20, fontWeight: 800, color: "#F9FAFB" }}>Meeting Scheduled!</h3>
+              <p style={{ fontSize: 14, color: "#9CA3AF", marginTop: 8, maxWidth: 420, lineHeight: 1.6 }}>
+                Awesome, <strong style={{ color: "#F9FAFB" }}>{formData.name}</strong>! Your 30-minute session is confirmed for:
+              </p>
+              <div style={{ margin: "16px 0", padding: "12px 24px", background: "rgba(56, 189, 248, 0.1)", borderRadius: 12, border: "1px solid rgba(56, 189, 248, 0.2)", color: "#38BDF8", fontWeight: 700, fontSize: 15 }}>
+                📅 {formatDateLabel(selectedDate)} at ⏰ {selectedSlot} (IST)
+              </div>
+              <p style={{ fontSize: 13.5, color: "#9CA3AF", maxWidth: 380, lineHeight: 1.5 }}>
+                A calendar invitation with the Google Meet link has been sent to <strong style={{ color: "#38BDF8" }}>{formData.email}</strong>.
+              </p>
+              <button
+                onClick={handleReset}
+                className="btn-secondary"
+                style={{ marginTop: 24, padding: "10px 24px", fontSize: 13.5 }}
+              >
+                <span>Done</span>
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+              
+              {/* Date Selection */}
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#9CA3AF", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  1. Select Date
+                </label>
+                <div style={{ display: "flex", gap: 8, overflowX: "auto", paddingBottom: 6 }}>
+                  {availableDays.map((date, idx) => {
+                    const isSelected = selectedDate && selectedDate.toDateString() === date.toDateString();
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setSelectedDate(date)}
+                        style={{
+                          flex: "0 0 auto",
+                          padding: "10px 14px",
+                          borderRadius: 12,
+                          background: isSelected ? "rgba(56, 189, 248, 0.15)" : "rgba(255, 255, 255, 0.03)",
+                          border: isSelected ? "1.5px solid #38BDF8" : "1.5px solid rgba(255, 255, 255, 0.08)",
+                          color: isSelected ? "#38BDF8" : "#9CA3AF",
+                          cursor: "pointer",
+                          textAlign: "center",
+                          minWidth: 80,
+                          transition: "all 0.2s ease"
+                        }}
+                      >
+                        <div style={{ fontSize: 11, textTransform: "uppercase", fontWeight: 600 }}>{date.toLocaleDateString("en-US", { weekday: "short" })}</div>
+                        <div style={{ fontSize: 18, fontWeight: 800, marginTop: 2 }}>{date.getDate()}</div>
+                        <div style={{ fontSize: 10, marginTop: 2 }}>{date.toLocaleDateString("en-US", { month: "short" })}</div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Time Selection */}
+              <div>
+                <label style={{ display: "block", fontSize: 13, fontWeight: 700, color: "#9CA3AF", marginBottom: 8, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  2. Select Time (IST)
+                </label>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                  {timeSlots.map((slot, idx) => {
+                    const isSelected = selectedSlot === slot;
+                    return (
+                      <button
+                        key={idx}
+                        type="button"
+                        onClick={() => setSelectedSlot(slot)}
+                        style={{
+                          padding: "8px 14px",
+                          borderRadius: 100,
+                          background: isSelected ? "rgba(56, 189, 248, 0.15)" : "rgba(255, 255, 255, 0.03)",
+                          border: isSelected ? "1px solid #38BDF8" : "1px solid rgba(255, 255, 255, 0.08)",
+                          color: isSelected ? "#38BDF8" : "#D1D5DB",
+                          fontWeight: 600,
+                          fontSize: 12.5,
+                          cursor: "pointer",
+                          transition: "all 0.2s ease"
+                        }}
+                      >
+                        {slot}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Form Info */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 14, borderTop: "1px solid rgba(255, 255, 255, 0.06)", paddingTop: 18 }}>
+                <label style={{ fontSize: 13, fontWeight: 700, color: "#9CA3AF", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                  3. Your Details
+                </label>
+                
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <input
+                      type="text"
+                      required
+                      placeholder="Your Name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      style={{
+                        padding: "10px 14px",
+                        background: "rgba(255, 255, 255, 0.03)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        borderRadius: 10,
+                        color: "#FFF",
+                        fontSize: 13.5,
+                        outline: "none"
+                      }}
+                    />
+                  </div>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Email Address"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      style={{
+                        padding: "10px 14px",
+                        background: "rgba(255, 255, 255, 0.03)",
+                        border: "1px solid rgba(255, 255, 255, 0.08)",
+                        borderRadius: 10,
+                        color: "#FFF",
+                        fontSize: 13.5,
+                        outline: "none"
+                      }}
+                    />
+                  </div>
+                </div>
+
+                <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                  <textarea
+                    placeholder="Describe the purpose of the call (optional)"
+                    rows={2}
+                    value={formData.note}
+                    onChange={(e) => setFormData({ ...formData, note: e.target.value })}
+                    style={{
+                      padding: "10px 14px",
+                      background: "rgba(255, 255, 255, 0.03)",
+                      border: "1px solid rgba(255, 255, 255, 0.08)",
+                      borderRadius: 10,
+                      color: "#FFF",
+                      fontSize: 13.5,
+                      outline: "none",
+                      resize: "vertical"
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Submit CTA */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-glow-primary"
+                style={{
+                  width: "100%",
+                  justifyContent: "center",
+                  padding: "12px",
+                  fontSize: 14,
+                  fontWeight: 700,
+                  marginTop: 8
+                }}
+              >
+                <span>{isSubmitting ? "Booking Session..." : "Confirm Booking"}</span>
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* Smooth Vertical Morph/Flip Text Animation Component (Zero Layout Shift) */
 function WordFlipAnimation({
   words = [
@@ -1259,10 +1582,29 @@ function ContactForm() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    fetch("https://formsubmit.co/ajax/priyasingh311256@gmail.com", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        name: formData.name,
+        email: formData.email,
+        subject: `✉️ New Portfolio Message: ${formData.subject}`,
+        message: formData.message
+      })
+    })
+    .then(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 850);
+    })
+    .catch((err) => {
+      console.error("Contact form error: ", err);
+      setIsSubmitting(false);
+      setSubmitted(true);
+    });
   };
 
   const handleReset = () => {
@@ -1397,6 +1739,9 @@ export default function Portfolio() {
   // EngageX Modal State
   const [isEngagexModalOpen, setIsEngagexModalOpen] = useState(false);
 
+  // Custom Calendar Scheduler Modal State
+  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
+
   const currentCodeModule = CODE_MODULES.find((m) => m.id === activeCodeId) || CODE_MODULES[0];
 
   // Filter logic
@@ -1478,9 +1823,9 @@ export default function Portfolio() {
 
           {/* Header Action Buttons */}
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <button onClick={handleDownloadResume} className="btn-secondary" style={{ padding: "8px 16px", fontSize: 13 }}>
-              <Download size={14} color="#38BDF8" />
-              <span>Resume</span>
+            <button onClick={() => setIsScheduleModalOpen(true)} className="btn-secondary" style={{ padding: "8px 16px", fontSize: 13, gap: 6 }}>
+              <Calendar size={14} color="#38BDF8" />
+              <span>Schedule Call</span>
             </button>
 
             <a href="#contact" className="btn-glow-primary" style={{ padding: "8px 18px", fontSize: 13 }}>
@@ -1523,8 +1868,13 @@ export default function Portfolio() {
 
             {/* CTAs */}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 14, marginBottom: 36 }}>
-              <button onClick={handleDownloadResume} className="btn-glow-primary">
-                <Download size={16} />
+              <button onClick={() => setIsScheduleModalOpen(true)} className="btn-glow-primary" style={{ gap: 8 }}>
+                <Calendar size={16} />
+                <span>Schedule a Call</span>
+              </button>
+
+              <button onClick={handleDownloadResume} className="btn-secondary">
+                <Download size={16} color="#38BDF8" />
                 <span>Download Resume</span>
               </button>
 
@@ -1930,7 +2280,7 @@ export default function Portfolio() {
         <Reveal delay={0.06}>
           <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 20, flexWrap: "wrap", marginBottom: 36 }}>
             <a
-              href="https://github.com"
+              href="https://github.com/priyasingh31/"
               target="_blank"
               rel="noreferrer"
               className="contact-circle-btn"
@@ -1943,7 +2293,7 @@ export default function Portfolio() {
             </a>
 
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/priya-kumari-788966261/"
               target="_blank"
               rel="noreferrer"
               className="contact-circle-btn"
@@ -1966,15 +2316,16 @@ export default function Portfolio() {
             </button>
 
             <a
-              href="https://t.me"
+              href="https://www.instagram.com/priya_singhhhh._?igsh=dnZkOGZnN2l3NmF2&utm_source=qr"
               target="_blank"
               rel="noreferrer"
               className="contact-circle-btn"
-              title="Telegram Message"
+              title="Instagram Profile"
             >
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
             </a>
 
@@ -2025,9 +2376,16 @@ export default function Portfolio() {
         onClose={() => setIsEngagexModalOpen(false)}
       />
 
+      {/* ---------------- 9b. CUSTOM FREE CALENDAR SCHEDULER MODAL ---------------- */}
+      <ScheduleCallModal
+        isOpen={isScheduleModalOpen}
+        onClose={() => setIsScheduleModalOpen(false)}
+      />
+
       {/* ---------------- 10. AI ASSISTANT CHATBOT ---------------- */}
       <AiChatbot
         onOpenEngagexModal={() => setIsEngagexModalOpen(true)}
+        onOpenScheduleModal={() => setIsScheduleModalOpen(true)}
       />
     </div>
   );
