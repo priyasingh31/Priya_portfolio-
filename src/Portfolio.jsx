@@ -222,7 +222,20 @@ const CODE_MODULES = [
 
 const EXPERIENCE = [
   {
-    when: "Jun 2025 — Present",
+    when: "Feb 2026 — Present",
+    role: "Software Development Engineer I (SDE-1)",
+    org: "Realhubb Ventures",
+    location: "Bengaluru (Hybrid)",
+    highlights: [
+      "Architecting and developing 'Taskezy', a modern property management portal, optimizing core frontend states and user dashboard journeys.",
+      "Building high-performance, dynamic real estate microsites and lead-generation funnels using Next.js, React, and optimized asset loading.",
+      "Implementing responsive layouts, glassmorphic UI components, and fluid micro-animations to deliver a premium user experience.",
+      "Integrating secure API endpoints and robust state management structures, reducing client-side load latency and streamlining workflow modules."
+    ],
+    skills: ["Next.js", "React", "TypeScript", "Node.js", "Tailwind CSS", "RESTful APIs", "State Management"]
+  },
+  {
+    when: "Jun 2025 — Feb 2026",
     role: "Associate Software Engineer",
     org: "Mobtions",
     location: "In-Office",
@@ -468,7 +481,7 @@ function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
     if (q.includes("resume") || q.includes("cv") || q.includes("download") || q.includes("schedule") || q.includes("call") || q.includes("meeting") || q.includes("calendar")) {
       return {
         sender: "bot",
-        text: "Priya Kumari is an Associate Software Engineer at Mobtions specializing in high-performance RESTful APIs, Node.js, FastAPI, PostgreSQL, and Redis. Click below to schedule a call with her:",
+        text: "Priya Kumari is an SDE-1 at Realhubb Ventures (ex-Mobtions) specializing in high-performance React/Next.js platforms, RESTful APIs, Node.js, and FastAPI. Click below to schedule a call with her:",
         time: "Just now",
         actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
@@ -477,7 +490,7 @@ function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
     if (q.includes("who") || q.includes("about") || q.includes("priya") || q.includes("bio") || q.includes("background")) {
       return {
         sender: "bot",
-        text: "Priya Kumari is a backend-focused Full Stack Engineer with 1+ years of professional experience. She holds a B.Tech from KIIT (2021-2025), reduced database P95 latency by 76% at Mobtions, built live platforms Fintaxure.com and KanecTech.com, and served as Lead Architect for EngageX.",
+        text: "Priya Kumari is a Full Stack Engineer currently working as SDE-1 at Realhubb Ventures. She holds a B.Tech from KIIT (2021-2025), previously reduced database P95 latency by 76% at Mobtions, built live platforms Fintaxure.com and KanecTech.com, and engineered the high-performance EngageX ad-tech platform.",
         time: "Just now",
         actions: [
           { type: "schedule", label: "Schedule a Call 📅" },
@@ -498,7 +511,7 @@ function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
     if (q.includes("engagex") || q.includes("ad-tech") || q.includes("adtech") || q.includes("microservice")) {
       return {
         sender: "bot",
-        text: "EngageX is a mobile performance advertising marketplace built by Priya as Lead Architect! It features 8 independently deployable microservices, 100% cookie-free server-to-server (S2S) attribution, automated Razorpay publisher payouts, and a self-healing async offer sync engine.",
+        text: "EngageX is a mobile performance advertising marketplace engineered by Priya! It features 8 independently deployable microservices, 100% cookie-free server-to-server (S2S) attribution, automated Razorpay publisher payouts, and a self-healing async offer sync engine.",
         time: "Just now",
         actions: [{ type: "engagex", label: "Read EngageX Case Study ⚡" }]
       };
@@ -525,10 +538,10 @@ function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
       };
     }
 
-    if (q.includes("experience") || q.includes("mobtions") || q.includes("work") || q.includes("job")) {
+    if (q.includes("experience") || q.includes("realhubb") || q.includes("mobtions") || q.includes("work") || q.includes("job")) {
       return {
         sender: "bot",
-        text: "Priya works as an Associate Software Engineer at Mobtions (Jun 2025–Present) where she cut P95 API latency by 76%, reduced database load by 60% via Redis, and automated Apache Airflow ETL pipelines. She previously worked as a Game Dev Intern at Mobtions.",
+        text: "Priya is currently an SDE-1 at Realhubb Ventures (Feb 2026–Present) working on the Taskezy real estate platform. Previously, she worked as an Associate Software Engineer at Mobtions (Jun 2025–Feb 2026), where she reduced P95 latency by 76%, and as a Game Dev Intern.",
         time: "Just now",
         actions: [{ type: "schedule", label: "Schedule a Call 📅" }]
       };
@@ -545,7 +558,7 @@ function AiChatbot({ onOpenEngagexModal, onOpenScheduleModal }) {
 
     return {
       sender: "bot",
-      text: "I'm Priya's AI Assistant! You can ask me about her experience at Mobtions, her tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or schedule a call with her below:",
+      text: "I'm Priya's AI Assistant! You can ask me about her experience at Realhubb Ventures & Mobtions, her tech stack, live projects (Fintaxure & KanecTech), EngageX architecture, or schedule a call with her below:",
       time: "Just now",
       actions: [
         { type: "schedule", label: "Schedule a Call 📅" },
@@ -1163,7 +1176,7 @@ function EngagexModal({ isOpen, onClose }) {
         {/* Modal Footer Bar */}
         <div style={{ padding: "16px 28px", background: "#121723", borderTop: "1px solid rgba(255, 255, 255, 0.08)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <span style={{ fontSize: 12, color: "#6B7280", fontFamily: "var(--font-mono)" }}>
-            EngageX Case Study • Lead Developer / Architect: Priya Kumari
+            EngageX Case Study • Designed & Engineered by Priya Kumari
           </span>
           <button onClick={onClose} className="btn-glow-primary" style={{ padding: "8px 20px", fontSize: 13 }}>
             <span>Close Case Study</span>
@@ -1884,7 +1897,7 @@ export default function Portfolio() {
             </h1>
 
             <p style={{ fontSize: "1.1rem", color: "#9CA3AF", maxWidth: 540, lineHeight: 1.7, marginBottom: 32 }}>
-              Hi, I'm <strong style={{ color: "#F9FAFB" }}>Priya Kumari</strong> — Associate Software Engineer at Mobtions. Lead Architect of <button onClick={() => setIsEngagexModalOpen(true)} style={{ background: "none", border: "none", color: "#38BDF8", fontWeight: 800, cursor: "pointer", padding: 0, textDecoration: "underline" }}>EngageX</button>, and creator of production platforms <a href="https://fintaxure.com/" target="_blank" rel="noreferrer" style={{ color: "#38BDF8", textDecoration: "none", fontWeight: 700 }}>Fintaxure.com</a> and <a href="https://www.kanectech.com/" target="_blank" rel="noreferrer" style={{ color: "#38BDF8", textDecoration: "none", fontWeight: 700 }}>KanecTech.com</a>.
+              Hi, I'm <strong style={{ color: "#F9FAFB" }}>Priya Kumari</strong> — Software Development Engineer (SDE-1) at Realhubb Ventures. I architected and engineered <button onClick={() => setIsEngagexModalOpen(true)} style={{ background: "none", border: "none", color: "#38BDF8", fontWeight: 800, cursor: "pointer", padding: 0, textDecoration: "underline" }}>EngageX</button> (a high-throughput ad-tech platform) and scaled live production systems like <a href="https://fintaxure.com/" target="_blank" rel="noreferrer" style={{ color: "#38BDF8", textDecoration: "none", fontWeight: 700 }}>Fintaxure.com</a> and <a href="https://www.kanectech.com/" target="_blank" rel="noreferrer" style={{ color: "#38BDF8", textDecoration: "none", fontWeight: 700 }}>KanecTech.com</a>.
             </p>
 
             {/* CTAs */}
