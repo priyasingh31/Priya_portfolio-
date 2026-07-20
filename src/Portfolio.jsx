@@ -1573,6 +1573,7 @@ function ContactForm() {
     name: "",
     email: "",
     subject: "Full-Stack Web App",
+    customSubject: "",
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -1583,6 +1584,8 @@ function ContactForm() {
     if (!formData.name || !formData.email || !formData.message) return;
     setIsSubmitting(true);
 
+    const actualSubject = formData.subject === "Other" ? (formData.customSubject || "Custom Inquiry") : formData.subject;
+
     fetch("https://formsubmit.co/ajax/priyasingh311256@gmail.com", {
       method: "POST",
       headers: {
@@ -1592,7 +1595,7 @@ function ContactForm() {
       body: JSON.stringify({
         name: formData.name,
         email: formData.email,
-        subject: `✉️ New Portfolio Message: ${formData.subject}`,
+        subject: `✉️ New Portfolio Message: ${actualSubject}`,
         message: formData.message
       })
     })
@@ -1608,7 +1611,7 @@ function ContactForm() {
   };
 
   const handleReset = () => {
-    setFormData({ name: "", email: "", subject: "Full-Stack Web App", message: "" });
+    setFormData({ name: "", email: "", subject: "Full-Stack Web App", customSubject: "", message: "" });
     setSubmitted(false);
   };
 
@@ -1681,8 +1684,26 @@ function ContactForm() {
               <option value="System Architecture">System Architecture & Microservices Consulting</option>
               <option value="Hiring / Full-Time Role">Hiring / Full-Time Role Opportunity</option>
               <option value="General Inquiry">General Inquiry / Coffee Chat</option>
+              <option value="Other">Other (Type custom inquiry...)</option>
             </select>
           </div>
+
+          {formData.subject === "Other" && (
+            <div className="contact-input-group animate-fade-in" style={{ marginTop: 12 }}>
+              <label className="contact-input-label">
+                <Code size={14} color="#38BDF8" />
+                <span>Specify Inquiry / Topic</span>
+              </label>
+              <input
+                type="text"
+                required
+                value={formData.customSubject || ""}
+                onChange={(e) => setFormData({ ...formData, customSubject: e.target.value })}
+                placeholder="e.g. Mobile App Dev, Partnership, etc."
+                className="contact-input-field"
+              />
+            </div>
+          )}
 
           <div className="contact-input-group">
             <label className="contact-input-label">
